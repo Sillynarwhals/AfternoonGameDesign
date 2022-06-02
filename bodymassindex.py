@@ -17,5 +17,5 @@ if (BMI < 14.5):
 if (BMI > 40):
     print ("you're overweight")
 
-if (BMI > 14.5) or (BMI < 40):
+if (BMI > 14.5) and (BMI < 40):
     print ("you're healthy")

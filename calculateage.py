@@ -2,7 +2,7 @@
 # calculate age
 
 import os
-os.system("clear")
+os.system("cls")
 
 number1 = int(input("the current year"))
 number2 = int(input("year of birth"))
@@ -14,6 +14,3 @@ if (subtract > 50):
     print ("you are old")
 if (subtract < 50):
     print ("you are young")
-if (subtract = 50):
-    print ("you are still old")
-
