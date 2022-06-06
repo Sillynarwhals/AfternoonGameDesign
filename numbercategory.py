@@ -20,3 +20,5 @@ if (Multiple2==0):
     print ("number is a multiple of 3")
 if (Multiple2>0):
     print ("number is not a multiple of 3")
+if (Multiple==0) and (Multiple2==0):
+    print ("number is a multiple of 3 and 5")
