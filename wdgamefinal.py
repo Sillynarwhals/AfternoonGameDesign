@@ -1,5 +1,7 @@
 # Daniel Walker
 # from ctypes.wintypes import WORD
+from dataclasses import replace
+from html.entities import name2codepoint
 import random
 import os
 from secrets import choice
@@ -95,10 +97,14 @@ while Game:
             print("sorry you did not guess the word correctly")
     score = 200-40*(count-1) 
     if score > high:
-        high= score
-
-    print(name + ", your score is" + str(score))
-    input("Please press enter ")
+        score=high
+        scrLine=str(high)+"\t"+name +"\n"
+        myFile = open("scre.txt", 'a')
+        myFile.write(scrLine)
+        myFile.close()
+    else:
+        print ("Your Highest score is"+ str(high))
+        input("Please press enter ")
 
     #os.system('cls')
     answer = input("Do you want to play again? ")
@@ -106,4 +112,8 @@ while Game:
         Game = False
         print("Thank you for playing")
         
-print("Your highest score is"+ str(high))
+
+
+
+
+

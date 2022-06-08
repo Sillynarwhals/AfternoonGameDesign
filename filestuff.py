@@ -16,7 +16,7 @@ print(date.strftime("%m-%d-%Y"))
 name="Asha"
 sce=344
 scrLine=str(sce)+"\t"+date.strftime("%m-%d-%Y")+ "\t"+name +"\n"
-print(scrLine)
+
 #create a file 
 myFile = open("scre.txt", 'w')
 myFile.write(scrLine)

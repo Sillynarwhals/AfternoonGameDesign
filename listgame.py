@@ -5,15 +5,16 @@ from ast import Break
 from audioop import add
 import os
 import random
+from unicodedata import name
 os.system ('cls')
 
 for i in range (74):
     print ("*", end = "")
 print ()
 print ( "|----------------------- Color Wheel ------------------------------------|")
-print ("| 1. Animal                                                               |")
+print ("| 1. Color                                                                |")
 print ("| 2. Fruit                                                                |")
-print ("| 3. Color                                                                |")
+print ("| 3. Animal                                                               |")
 print ("|If you guess correct you win. If you guess incorrect reset and try again |")
 print ("|                         good luck ^v^                                   |")
 for i in range (74):
@@ -24,6 +25,15 @@ MyAnimal= ["dog", "cat", "snake", "cow", "pig", "chicken", "fish","bear", "ant",
 print ()
 count=0
 Game=True
+
+name = input("What is your name? ")
+print(name, end = ", ")
+answer = input("would you like to play the game? ")
+answer = answer.lower()
+if 'n' in answer:
+    Game = False
+    
+    
 
 while True:
     choice= input("What game would you like to play 1, 2, or 3? ")
@@ -45,7 +55,7 @@ def selectWord(choice):
     if choice==3:
         element=random.choice(MyAnimal)
     
-for i in range (10):
+for i in range (30):
     guess= input ("Please put your guess here:")
 
     if guess== random.choice(MyColors):
@@ -60,3 +70,23 @@ for i in range (10):
     else:
         print ("f Try again!")
         continue
+
+
+score = 200-40*(count-1) 
+high=0
+if score > high:
+    score=high
+    scrLine=str(high)+"\t"+ name +"\n"
+    myFile = open("scre.txt", 'a')
+    myFile.write(scrLine)
+    myFile.close()
+else:
+    print ("Your Highest score is"+ str(high))
+    input("Please press enter ")
+
+    #os.system('cls')
+    answer = input("Do you want to play again? ")
+    if ('n' or 'N') in answer:
+        Game = False
+        print("Thank you for playing")
+        
