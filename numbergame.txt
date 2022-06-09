@@ -1,0 +1,7 @@
+                                                Instructions
+                        
+                        1. Hi and Welcome to the Number Guessing Game
+                        2. In this game there are three levels in which you will guess a random Number
+                        3. Level one contains number between 1-25, Level two contains numbers between 1-50 and level three contains numbers between 1-100
+                        4. You have ten tries to guess the number, and there will be hints given through the game if you get it wrong
+                        5. Press 2 to access level one, Press 3 to access level 2, Press 4 to access level 3

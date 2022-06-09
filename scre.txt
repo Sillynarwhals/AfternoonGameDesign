@@ -1,6 +1,2 @@
-40	Joe
-0	Sally
-0	Dean
-0	Sally
-0	Dean
-0	Bob
+344	06-08-2022	Asha
+132	06-08-2022	Peter
