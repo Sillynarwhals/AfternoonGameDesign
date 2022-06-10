@@ -51,7 +51,7 @@ def createguesssinggame(range, tries, scremax): # this function create the guess
                 print("you have " + str(tries-x) + " tries left")         
 
 
-# createguesssinggame(25, 4, 160)
+# createguesssinggame(max range, guesses, base score)
 
 
     
