@@ -7,11 +7,10 @@
 # Game_end()
 
 
-from msilib.schema import Font
 import os, random, time, pygame, math, datetime, sys
 os.system('cls')
 
-pygame.init
+pygame.init()
 
 
 WIDTH=700 #like constant
@@ -25,10 +24,10 @@ mainTitle="Circle eats Square Menu"
 screen=pygame.display.set_mode((WIDTH,HEIGHT)) 
 pygame.display.set_caption("Tic Tac Te")  #change the title of my window
 backgrnd=colors.get("pink")
-FONT= pygame.font.SysFont("comicsans", 20)
+GAME_FONT= pygame.font.SysFont("comicsans", 20)
 size = 3
 #game Variable
-gameOver=False  #Check if the game is over
+gameOver=False #Check if the game is over
 winner=0        #who won the game
 xscore=0        #score count for x
 oscore=0        #score count for o
@@ -69,15 +68,16 @@ def draw_Markers():
         xValue +=1
     pygame.display.update() 
 
+
 def agn():
-    global Game, FONT, backgrnd
+    global Game, backgrnd
     Game = False
     screen.fill(backgrnd)
-    textagn=FONT.render('Want to play again?', 1, (linecolor))
+    textagn=GAME_FONT.render('Want to play again?', 1, (linecolor))
     Buttony=pygame.Rect(WIDTH//4, HEIGHT//2, 100, 50)
     Button_n=pygame.Rect(3*WIDTH//4, HEIGHT//2, 100, 50)
-    textyes=FONT.render('Yes', 1, (linecolor))
-    textno=FONT.render('No', 1, (linecolor))
+    textyes=GAME_FONT.render('Yes', 1, (linecolor))
+    textno=GAME_FONT.render('No', 1, (linecolor))
     xd = WIDTH//2 - (textagn.get_width()//2)
     screen.blit(textagn, (xd, 50))
     pygame.draw.rect(screen, colors.get('white'), Buttony)
@@ -93,12 +93,14 @@ def agn():
             my=mousePos[1]
             if Buttony.collidepoint((mx, my)):
                 cnt==0
+                markers.clear()
+                markers=[]
                 zero_Array()
                 Game = True
                 pygame.display.update()
             if Button_n.collidepoint((mx, my)):
                 screen.fill(backgrnd)
-                textbye=FONT.render('Bye!', 1, (linecolor))
+                textbye=GAME_FONT.render('Bye!', 1, (linecolor))
                 screen.blit(textbye, (xd, HEIGHT//2))
                 pygame.display.update()
                 pygame.time.delay(2000)
@@ -107,9 +109,9 @@ def agn():
 def gameEnd():
     global markers, Game
     markers=[]
-    textsce=FONT.render('Final Score', 1,(linecolor))
-    texto=FONT.render('O score:'(xscore), 1, (linecolor))
-    textx=FONT.render('X score:'(oscore), 1, (linecolor))
+    textsce=GAME_FONT.render('Final Score', 1,(linecolor))
+    texto=GAME_FONT.render('O score:'(xscore), 1, (linecolor))
+    textx=GAME_FONT.render('X score:'(oscore), 1, (linecolor))
     xd = WIDTH//2 - (textsce.get_width()//2)
     screen.blit(textsce, (xd, 50))
     screen.blit(texto, (WIDTH//4, HEIGHT//2))
@@ -169,7 +171,7 @@ def checkWinner():
         if winner==0:
             screen.fill(backgrnd)
             print('Tie')
-            cnttext = FONT.render('Nobody won.', 1, (backgrnd))
+            cnttext = GAME_FONT.render('Nobody won.', 1, (backgrnd))
             screen.blit(cnttext, (10, HEIGHT//2))
             pygame.display.update()
             pygame.time.delay(2000)
@@ -195,7 +197,8 @@ def checkWinner():
 zero_Array()
 Game = True  
 cnt=0
-while Game and cnt<9:
+run=True
+while run and cnt<9:
     screen.fill(backgrnd)
     draw_grid()
     draw_Markers()
