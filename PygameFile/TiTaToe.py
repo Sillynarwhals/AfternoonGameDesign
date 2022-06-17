@@ -168,14 +168,6 @@ def checkWinner():
             print('O won!')
             os.system('cls')
             agn()
-        if winner==0:
-            screen.fill(backgrnd)
-            print('Tie')
-            cnttext = GAME_FONT.render('Nobody won.', 1, (backgrnd))
-            screen.blit(cnttext, (10, HEIGHT//2))
-            pygame.display.update()
-            pygame.time.delay(2000)
-            agn()
         #Check if game is tie
         if gameOver==False: #BOOLEAN == not gameOver
             tie= True
@@ -223,4 +215,11 @@ while run and cnt<9:
                 print(winner)
                 if gameOver: 
                     gameEnd()
+    if cnt==9:
+        screen.fill(linecolor)
+        cnttext = GAME_FONT.render('Nobody won.', 1, (backgrnd))
+        screen.blit(cnttext, (10, HEIGHT//2))
+        pygame.display.update()
+        pygame.time.delay(2000)
+        agn()
 
