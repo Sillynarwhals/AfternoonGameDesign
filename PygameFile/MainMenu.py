@@ -175,6 +175,7 @@ def Instructions():
 
 
 def settings():
+    global WIDTH, HEIGHT
     TITLE_FONT = pygame.font.SysFont('comicsans', 40)
     MENU_FONT = pygame.font.SysFont('comicsans', 20)
     title=TITLE_FONT.render('Settings', 1, colors.get('black'))
@@ -313,6 +314,7 @@ def settings():
                     WIDTH=500
                     HEIGHT=500
                     screen2=pygame.display.set_mode((WIDTH,HEIGHT)) 
+                    running = True
                     pygame.display.update()
 
                     
