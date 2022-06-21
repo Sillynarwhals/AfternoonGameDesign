@@ -19,6 +19,9 @@ man = pygame.image.load('PygameFile\images\player.png')
 man = pygame.transform.scale(man, (50, 50))
 treasure = pygame.image.load('PygameFile\images\\treasure.png')
 treasure = pygame.transform.scale(treasure, (50, 50))
+#car1= pygame.image.load('PygameFile\images\car2.png')
+#car1= pygame.transform.rotate(car1, 90)
+#car1= pygame.transform.scale(car1,(500,550) )
 bg= pygame.image.load('PygameFile\images\\road bg.png')
 bg = pygame.transform.scale(bg, (WIDTH, HEIGHT))
 #create screen window
@@ -32,6 +35,8 @@ x = 50
 y = HEIGHT//6
 tx = 600
 ty = 300
+cx = 100
+cy= 10
 vel = 4
 twidth = 14
 theight = 12
@@ -44,6 +49,7 @@ def redrawGameWindow():
     global walkCount
     screen.blit(bg, (0,0))
     screen.blit(treasure,(tx,ty))
+    #screen.blit(car1, (cx, cy))
     if walkCount + 1 >= 27:
         walkCount = 0
 
@@ -90,6 +96,7 @@ while run:
         right=False
     
     redrawGameWindow()
+
     
 
 
