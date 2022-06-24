@@ -333,6 +333,7 @@ def settings():
 #scoreboard Function
 def scoreboard():
     name= input("Asha")
+    score=300
     high=0
     #Texts with Font
     title=TITLE_FONT.render('Scoreboard', 1, colors.get('blue'))
@@ -345,11 +346,6 @@ def scoreboard():
     screen.blit(title, (250,50))
     screen.blit(text3, (30, 355))
     pygame.display.update()
-    #Add score in file
-    print(score)
-    File=open('PygameFile\PygameScore.txt', 'a')
-    File.write(str(score))
-    File.close()
     #Reads score from file
     myFile = open("PygameFile\PygameScore.txt", 'r')
     stuff=myFile.readlines()
@@ -358,7 +354,6 @@ def scoreboard():
         screen.blit(line, (200,50))
         pygame.display.update()
         print(line)
-        
     #adds highscore to game 
     with open('PygameFile\PygameScore.txt') as f:
         if score > high:
@@ -367,6 +362,8 @@ def scoreboard():
             myFile = open("PygameFile\PygameScore.txt", 'a')
             myFile.write(scrLine)
             myFile.close()
+        
+
             
 
 

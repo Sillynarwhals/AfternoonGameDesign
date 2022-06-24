@@ -12,6 +12,7 @@ os.system('cls')
 #dimensions
 WIDTH=700
 HEIGHT=700
+score=300
 #list of colors
 colors={"white":(255,255,255),"pink":(255,0,255),"blue":(0,0,255),"limeGreen":(153,255,51), "red": (255,0,0), "black": (0,0,0), "yellow": (255,255,0), "brown": (150, 75, 0)}
 #Font for words and stuff
@@ -21,6 +22,7 @@ win=TITLE_FONT.render('YOU WIN!!!', 1, colors.get('black'))
 Button_menu=pygame.Rect(274, 150, 125, 40)
 text=MENU_FONT.render('Return to Menu', 1, colors.get('black'))
 lose=TITLE_FONT.render("YOU LOSE :( Try Again", 1, colors.get('black'))
+Score=MENU_FONT.render("Your score is:" + str(score), 1, colors.get("black"))
 #Images
 man = pygame.image.load('PygameFile\images\player.png')
 man = pygame.transform.scale(man, (50, 50))
@@ -95,7 +97,7 @@ vel = 2
 UP=True
 DOWN=True
 count=0
-score=300
+
 
 
 
@@ -164,9 +166,10 @@ while run:
     if manBox.colliderect(treasureBox):
         screen.fill(colors.get("white"))
         screen.blit(win, (WIDTH//3, 50))
+        
         pygame.draw.rect(screen, colors.get('limeGreen'), Button_menu)
         screen.blit(text, (240, 150))
-        print("Your score is:", score)
+        screen.blit(Score, (240, 300))
         pygame.display.update()
         while True:
             for event in pygame.event.get():

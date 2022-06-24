@@ -385,6 +385,7 @@ def exit():
 pygame.display.update()
 #Level 2 of Crossy Road (with increased velocity of cars)
 def Game_2():
+    score=300
     #Font for words and stuff
     TITLE_FONT = pygame.font.SysFont('comicsans', 40) #font for Title
     MENU_FONT = pygame.font.SysFont('comicsans', 20) #font for words 
@@ -392,6 +393,7 @@ def Game_2():
     Button_menu=pygame.Rect(274, 150, 125, 40)
     text=MENU_FONT.render('Return to Menu', 1, colors.get('black'))
     lose=TITLE_FONT.render("YOU LOSE :( Try Again", 1, colors.get('black'))
+    Score=MENU_FONT.render("Your score is:" + str(score), 1, colors.get("black"))
     #Images
     man = pygame.image.load('PygameFile\images\player.png')
     man = pygame.transform.scale(man, (50, 50))
@@ -537,7 +539,7 @@ def Game_2():
             screen.blit(win, (WIDTH//3, 50))
             pygame.draw.rect(screen, colors.get('limeGreen'), Button_menu)
             screen.blit(text, (240, 150))
-            print("Your score is:", score)
+            screen.blit(Score, (240, 300))
             File=open('PygameFile\PygameScore.txt', 'a')
             File.write(str(score))
             File.close()
@@ -596,10 +598,12 @@ def Game_2():
 #Level 1 of Crossy Road (with slower cars)
 def Game_1():
     #Crossy Road Level 1
+    score=300
     #text 
     win=TITLE_FONT.render('YOU WIN!!!', 1, colors.get('black'))
     text=MENU_FONT.render('Return to Menu', 1, colors.get('black'))
     lose=TITLE_FONT.render("YOU LOSE :( Try Again", 1, colors.get('black'))
+    Score=MENU_FONT.render("Your score is:" + str(score), 1, colors.get("black"))
     #buttons
     Button_menu=pygame.Rect(274, 150, 125, 40)
     #Images
@@ -748,7 +752,7 @@ def Game_1():
             screen.blit(win, (WIDTH//3, 50))
             pygame.draw.rect(screen, colors.get('limeGreen'), Button_menu)
             screen.blit(text, (240, 150))
-            print("Your score is:", score)
+            screen.blit(Score, (240, 300))
             File=open('PygameFile\PygameScore.txt', 'a')
             File.write(str(score))
             File.close()
@@ -806,6 +810,7 @@ def Game_1():
 
 #Level 3 of Crossy Road with even faster cars and slower player
 def Game_3():
+    score=300
     #Font for words and stuff
     TITLE_FONT = pygame.font.SysFont('comicsans', 40) #font for Title
     MENU_FONT = pygame.font.SysFont('comicsans', 20) #font for words 
@@ -813,6 +818,7 @@ def Game_3():
     Button_menu=pygame.Rect(274, 150, 125, 40)
     text=MENU_FONT.render('Return to Menu', 1, colors.get('black'))
     lose=TITLE_FONT.render("YOU LOSE :( Try Again", 1, colors.get('black'))
+    Score=MENU_FONT.render("Your score is:" + str(score), 1, colors.get("black"))
     #Images
     man = pygame.image.load('PygameFile\images\player.png')
     man = pygame.transform.scale(man, (50, 50))
@@ -958,7 +964,7 @@ def Game_3():
             screen.blit(win, (WIDTH//3, 50))
             pygame.draw.rect(screen, colors.get('limeGreen'), Button_menu)
             screen.blit(text, (240, 150))
-            print("Your score is:", score)
+            screen.blit(Score, (240, 300))
             File=open('PygameFile\PygameScore.txt', 'a')
             File.write(str(score))
             File.close()
