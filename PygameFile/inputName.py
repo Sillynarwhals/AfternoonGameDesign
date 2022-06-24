@@ -7,71 +7,56 @@
 #       add the letter
 #       if press Backspace, delete last character
 #       if press return they are d
-
-import pygame, time,os,random, math, datetime, sys
-date=datetime.datetime.now()
-pygame.init()#initialize the pygame package
-
-# print(pygame.font.get_fonts())
-# pygame.time.delay(10000)
-TITLE_FONT = pygame.font.SysFont('comicsans', 40)
-MENU_FONT = pygame.font.SysFont('comicsans', 20)
-
+import pygame, os, sys
+pygame.init()
 os.system('cls')
-WIDTH=700 #like constant
-HEIGHT=700
-screen=pygame.display.set_mode((WIDTH,HEIGHT)) 
-pygame.display.set_caption("User Name")  #change the title of my window
-# framming your game
-clock=pygame.time.Clock()
-colors={"white":(255,255,255),"pink":(255,0,255),"blue":(0,0,255),"limeGreen":(153,255,51), "red": (255,0,0), "black": (0,0,0), "yellow": (255,255,0)}
-backgrnd=(255,255,255)
-screen.fill(backgrnd)
-pygame.display.update()
-pygame.time.delay(500)
-#local variables for game
-#boxes for menu
-Bx=WIDTH//3
-By= HEIGHT//20
-user_name=input(" ")
-#create title
-nametitle = TITLE_FONT.render("Input User Name",1, colors.get("blue"))
-screen.blit(nametitle,(200,50))
 
-input_rect=pygame.Rect(WIDTH//3, HEIGHT//3, 140, 50)
-userName = MENU_FONT.render(user_name, 1, colors.get("black"))
-screen.blit(userName, (WIDTH//3, HEIGHT//2))
+clock=pygame.time.Clock()
+backgrnd=(255,255,255)
+WIDTH=700
+HEIGHT=700
+screen=pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption('Get Name')
+screen.fill(backgrnd)
+run = True 
+userName=''
+nameClr=(1, 125, 125) #for text for name
+bxClr=(200, 200, 200) #text box 
+
+TITLE_FONT = pygame.font.SysFont('comicsans', WIDTH//20)
+MENU_FONT = pygame.font.SysFont('comicsans', WIDTH//30)
+
+title=TITLE_FONT.render('Enter Name', 1, bxClr)
+screen.blit(title, (WIDTH/2.5, HEIGHT//7))
 pygame.display.update()
-#create your box related to your width and height
-run=True
+
+nameBox=pygame.Rect(WIDTH//4, HEIGHT//3, WIDTH//2, HEIGHT//10)
+pygame.draw.rect(screen, bxClr, nameBox)
+pygame.display.update()
 while run:
-    clock.tick(60)
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
-            print(user_name)
+            #Menu(mainTitle,messageMenu)
             pygame.quit()
             sys.exit()
-        if event.type==pygame.MOUSEBUTTONDOWN:
+            print("You quit")
+        if event.type == pygame.MOUSEBUTTONDOWN:
             print()
-        if event.type==pygame.KEYDOWN:
-            if event.key==pygame.K_RETURN:
-                #main menu
-                print(user_name)
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RETURN:
+                print(userName)
+                #run main menu - if in main program
                 pygame.quit()
                 sys.exit()
-            if event.key==pygame.K_BACKSPACE:
-                user_name=user_name[:-1]
+            if event.key ==pygame.K_BACKSPACE: #not working 
+                userName=userName[:-1]
+                print('back')
             else:
-                userName += event.unicode #gives you all characters
-        screen.fill(colors.get("white"))
+                userName += event.unicode
+        pygame.draw.rect(screen, bxClr, nameBox)
+        textSurface=MENU_FONT.render(userName, True, nameClr)
+        #use rect x and y to  allign the text 
+        screen.blit(textSurface, (nameBox.x+5, nameBox.y+5))
 
-        
-        screen.blit(nametitle,(200,50))
-        screen.blit(nametitle, (50,10))
-        # in ref to width  
-        #draw rect      
-        pygame.draw.rect(screen,colors.get("white"), input_rect)
-        #update the name user
-        name=MENU_FONT.render(userName, 1, colors.get("blue"))
-        screen.blit(name,(input_rect.x+5, input_rect.y+5))
         pygame.display.flip()
+        clock.tick(60)
